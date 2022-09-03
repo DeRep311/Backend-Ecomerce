@@ -9,3 +9,4 @@ router.postAsync('/:id/productos',controller.addProduct)
 router.deleteAsync('/:id/productos/:id_prod', controller.deleteCartProd)
 
 
+module.exports= router;

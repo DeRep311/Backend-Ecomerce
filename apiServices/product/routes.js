@@ -8,3 +8,6 @@ router.getAsync('/:id', controller.getProducts);
 router.postAsync('/', controller.newProduct);
 router.putAsync('/:id', controller.editProduct)
 router.deleteAsync('/:id', controller.delete);
+
+
+module.exports= router;
