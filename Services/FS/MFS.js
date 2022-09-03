@@ -1,9 +1,8 @@
 const fs = require('fs')
-const catDB= require('./CartDB.json')
-const ProdDB= require('./ProductBD.json');
 
 
-class Contenedor {
+
+class File {
     constructor(ruta) {
         this.ruta = ruta;
     }
@@ -11,46 +10,45 @@ class Contenedor {
     async save(data) {
 
         try {
-    
-          let objet = await this.getAll();
-    
-          let newId;
-    
-          if (objet.length === 0) {
-    
-            newId =1;
-    
-          } else {
-    
-            newId = objet[objet.length - 1].id+ 1;
-    
-          }
-    
-    
-          const newObj = { ...data, id:newId };
-    
-          objet.push(newObj);
-    
-    
-           fs.writeFile(this.ruta, JSON.stringify(objet, null, 2));
-    
-          
-    
+
+            let objet = await this.getAll();
+            let newId;
+
+            if (objet.length === 0) {
+
+                newId = 1;
+
+            } else {
+
+                newId = objet[objet.length - 1].id + 1;
+
+            }
+
+
+            const newObj = { ...data, id: newId };
+
+            objet.push(newObj);
+
+
+            fs.writeFile(this.ruta, JSON.stringify(objet, null, 2));
+
+
+
         } catch (error) {
-    
-          throw new Error(`Error al guardar: ${error}`);
-    
+
+            throw new Error(`Error al guardar: ${error}`);
+
         }
-    
-      }
-    async getById(id) {
-        try{
-        const objetos= await this.getAll();
-        
-        const nuevoObjeto = objetos.find(elemento => elemento.id== id);
-        return JSON.stringify(nuevoObjeto);
+
     }
-        catch(error){
+    async getById(id) {
+        try {
+            const objetos = await this.getAll();
+
+            const nuevoObjeto = objetos.find(elemento => elemento.id == id);
+            return JSON.stringify(nuevoObjeto);
+        }
+        catch (error) {
             console.log(`Error en conseguir id ${error}`);
 
         }
@@ -58,30 +56,30 @@ class Contenedor {
 
     async getAll() {
         try {
-           let objetos =JSON.parse(await fs.readFile(this.ruta, 'utf-8'));
+            let objetos = JSON.parse(await fs.readFile(this.ruta, 'utf-8'));
 
-           
+
             return objetos;
 
         } catch (error) {
             console.log(`Error al buscar la informacion ${error}`);
-            
-           return []
+
+            return []
         }
     }
 
     async deleteById(id) {
         try {
 
-        const objetos= await this.getAll();
+            const objetos = await this.getAll();
 
-        const nuevoObjeto = objetos.filter(elemento => elemento.id !== id);
-        if(nuevoObjeto.length === objetos.length){
-            throw new Error('no se encontro el id')
-        }
-      
-            await fs.writeFile(this.ruta, JSON.stringify(nuevoObjeto,null,2));
-        
+            const nuevoObjeto = objetos.filter(elemento => elemento.id !== id);
+            if (nuevoObjeto.length === objetos.length) {
+                throw new Error('no se encontro el id')
+            }
+
+            fs.writeFile(this.ruta, JSON.stringify(nuevoObjeto, null, 2));
+
         } catch (error) {
             console.log(`eliminar ${error}`);
         }
@@ -90,9 +88,11 @@ class Contenedor {
 
     async deleteAll() {
         try {
-            await fs.writeFile(`./${this.ruta}`, '');
-        }catch(error){
+            fs.writeFile(`./${this.ruta}`, '');
+        } catch (error) {
             console.log(`Hubo un error ${error}`);
         }
     }
 }
+
+exports.module = File;
