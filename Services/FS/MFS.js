@@ -6,6 +6,37 @@ class File {
     constructor(ruta) {
         this.ruta = ruta;
     }
+    async ModifyById(id, data) {
+        try {
+            const Objeto = await this.getAll().then(res => {
+                const indice = res.findIndex((elemento) => {
+                    return elemento.id == id;
+
+                })
+                if (indice!=-1) {
+                    res[indice] = data;
+
+
+                fs.writeFile(this.ruta, JSON.stringify(res, null, 2))
+                console.log("echo");
+                }else{
+                    console.log("Id no encontrado");
+                     
+                }
+                
+            })
+
+
+
+
+        } catch (error) {
+            console.log(error);
+        }
+
+
+
+
+    }
 
     async save(data) {
 
@@ -32,7 +63,7 @@ class File {
 
             fs.writeFile(this.ruta, JSON.stringify(objet, null, 2));
 
-
+                return console.log(`Su id es:${newId}`);
 
         } catch (error) {
 

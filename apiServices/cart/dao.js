@@ -1,25 +1,35 @@
 const File = require('./../../Services/FS/MFS')
-
-const DBP = new File('./../../Services/FS/ProductDB.txt')
 const DB = new File('./../../Services/FS/cartDB.txt');
 
-async function SaveCart(data){
-        DB.save(data)
+async function ReadCart(id){
+        return DB.getById(id)
 }
 
-async function ModifyCart(data){
-
+async function WriteCart(data){
+    DB.save(data);
+    return console.log("Write done");
 }
 
-async function DeleteAllCart(data) {
-    DB.deleteById(data);
+async function DeleteCartById(id) {
+    DB.deleteById(id);
+
+    return console.log(`Delete Cart ID:${id}, done`);
 }
 
-async function DeleteProductCart(params) {
-    
-}
-async function AddProducts(id){
 
-    const Produ= DBP.getById(id)
-    //falta informacion sobre la ruta
+async function DeleteProductCart(id) {
+    await DB.getById().then(res=>{
+        if (res.Product==null) {
+            console.log("Este carrito no tiene productos");
+        }else{
+        res.Product="";
+        DB.ModifyById(id,res)}
+    })
+}
+async function AddProducts(idCart,Produ){
+   
+    await DB.getById(idCart).then(res=>{
+        const data= JSON.parse(res,null, 2)
+        data['Productos']= Produ;
+    })
 }
