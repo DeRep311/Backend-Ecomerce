@@ -9,7 +9,7 @@ async  ReadCart(id){
 async WriteCart(data){
     DB.save(data);
     return console.log("Write done");
-}
+},
 
 async DeleteCartById(id) {
     DB.deleteById(id);
