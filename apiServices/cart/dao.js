@@ -18,7 +18,7 @@ async function DeleteCartById(id) {
 
 
 async function DeleteProductCart(id) {
-    await DB.getById().then(res=>{
+    await DB.getById(id).then(res=>{
         if (res.Product==null) {
             console.log("Este carrito no tiene productos");
         }else{
@@ -31,5 +31,16 @@ async function AddProducts(idCart,Produ){
     await DB.getById(idCart).then(res=>{
         const data= JSON.parse(res,null, 2)
         data['Productos']= Produ;
+    })
+}
+
+async function ReadProductCart(id) {
+    await DB.getById(id).then(res=>{
+        if (res.Product==null) {
+            console.log("Este carrito no tiene productos");
+        }else{
+        return res.Product;
+        
+    }
     })
 }
