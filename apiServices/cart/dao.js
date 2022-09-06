@@ -4,6 +4,7 @@ const DB = new File('./../../Services/FS/cartDB.txt');
 module.exports={
 async  ReadCart(id){
        try {
+           
             DB.getById(id).then(res=>{
                 return res
             })
@@ -23,7 +24,7 @@ async WriteCart(data){
 
 async DeleteCartById(id) {
     try {
-        B.deleteById(id);
+        DB.deleteById(id);
     
         return console.log(`Delete Cart ID:${id}, done`);
     } catch (error) {

@@ -1,5 +1,4 @@
 const fs = require('./dao')
-const fsP= require('./../product/dao')
 module.exports ={
     async newCart(data){
          try {
@@ -23,12 +22,12 @@ module.exports ={
             console.log(error);
            }
     },
-    async addProduCart(id, idProdu){
+    async addProduCart(id, produ){
           try {
-              await fsP.getById(idProdu).then(res=>{
-                await fs.AddProducts(id,res)
+              
+               await fs.AddProducts(id, produ)
                 
-              })
+              
           } catch (error) {
             console.log(error);
           }
