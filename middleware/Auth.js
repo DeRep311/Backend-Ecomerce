@@ -1,5 +1,5 @@
 module.exports={
-    async Auth(req, res, next){
+    Auth(req, res, next){
         const admin = true;
         if (admin) {
             next();
