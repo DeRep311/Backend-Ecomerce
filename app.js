@@ -1,4 +1,4 @@
-module.exports=app;
+
 const routes = require('./routes/routes.js')
 const express = require('express');
 const path = require('path');
@@ -16,3 +16,4 @@ app.listen(port, (err)=>{
     if (err) console.log("Error in server setup")
     console.log(`Su servidor escucha en el puerto ${port}`);
 })
+module.exports=app;
