@@ -1,17 +1,28 @@
-const { getProduCart, addProduCart, newCart, deleteCart, DeleteProdu } = require('./model');
+const { getProduCart, addProduCart, newCart, deleteCart, DeleteProdu, AllCarts } = require('./model');
 
 
 module.exports = {
     async newCart(req, res) {
         await newCart({ Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}` })
+        let valor_id=await AllCarts().then(resu=>{
+           
+        res.send(`Nuevo carrito creado id:${resu.length}`)
+        })
+        
     },
     async deleteCart(req, res) {
         const id = req.params.id;
         await deleteCart(id);
+        res.send(`Carrito id:${id} eliminado`)
     },
     async getCartProd(req, res) {
         const id = req.params.id;
-        await getProduCart(id)
+        const productos = await getProduCart(id)
+        if (productos==null) {
+            res.send("el id no se encuentra o no tiene productos")
+        } else {
+            res.send(productos)
+        }
 
     },
     async addProduct(req, res) {

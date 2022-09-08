@@ -1,0 +1,22 @@
+[
+  {
+    "Fecha": "Thu Sep 08 2022 19:47:20",
+    "id": 1
+  },
+  {
+    "Fecha": "Thu Sep 08 2022 19:49:36",
+    "id": 3,
+    "Productos": {
+      "Nombre": "Holanda",
+      "Descripcion": "",
+      "Codigo": 10023,
+      "Precio": 35000,
+      "Stock": 250,
+      "Fecha": "Thu Sep 08 2022 20:52:07"
+    }
+  },
+  {
+    "Fecha": "Thu Sep 08 2022 19:50:37",
+    "id": 4
+  }
+]

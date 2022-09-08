@@ -1,5 +1,4 @@
 const express = require('@awaitjs/express');
-const { Auth } = require('../../middleware/Auth');
 const controller= require('./controller')
 const router = express.Router();
 

@@ -1,7 +1,15 @@
 const File = require('./../../Services/FS/MFS')
-const DB = new File('./../../Services/FS/cartDB.txt');
+const DB = new File('./Services/FS/cartDB.txt');
 
 module.exports={
+    async ReadAllCart(){
+       try {
+            const valor = await DB.getAll()
+            return valor
+       } catch (error) {
+           console.log(error);
+       }
+    },
 async  ReadCart(id){
        try {
            
@@ -35,13 +43,13 @@ async DeleteCartById(id) {
 
 async DeleteProductCart(id) {
    try {
-        await DB.getById(id).then(res=>{
-            if (res.Product==null) {
+       const valor= await DB.getById(id)
+            if (valor.Product==null) {
                 console.log("Este carrito no tiene productos");
             }else{
-            res.Product="";
-            DB.ModifyById(id,res)}
-        })
+            valor.Product="";
+            DB.ModifyById(id,valor)}
+        
    } catch (error) {
     console.log(error);
    }
@@ -50,8 +58,15 @@ async AddProducts(idCart,Produ){
    
    try {
         await DB.getById(idCart).then(res=>{
-            const data= JSON.parse(res,null, 2)
-            data['Productos']= Produ;
+            const data= res
+            const longitud= data['Productos'].length;
+           
+                
+                data['Productos'][1]=Produ
+          
+            
+            DB.ModifyById(idCart,data);
+            return console.log("echo");
         })
    } catch (error) {
        console.log(error);
@@ -60,9 +75,10 @@ async AddProducts(idCart,Produ){
 
 async ReadProductCart(id) {
     try {
-        await this.getById(id).then(res=>{
-            const data = JSON.parse(res, null, 2)
-            console.log(typeof(data));
+        const data = await DB.getById(id)
+            
+            
+            
             if (data.Producto==null) {
                 console.log("Este carrito no tiene productos");
             }else{
@@ -70,15 +86,16 @@ async ReadProductCart(id) {
                 return console.log(x);
             });
             
+        
         }
-        })
     } catch (error) {
         console.log(error);
+        return null
     }
 },
 async DeleteProductCart(id, idProdu) {
     try {
-        await this.getById(id).then(res => {
+        await DB.getById(id).then(res => {
             const data = JSON.parse(res, null, 2)
 
             if (data.Producto == null) {

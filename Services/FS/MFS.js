@@ -1,4 +1,4 @@
-const fs = require('fs')
+const { promises: fs } = require('fs')
 
 
 
@@ -13,17 +13,17 @@ class File {
                     return elemento.id == id;
 
                 })
-                if (indice!=-1) {
+                if (indice != -1) {
                     res[indice] = data;
 
 
-                fs.writeFile(this.ruta, JSON.stringify(res, null, 2))
-                console.log("echo");
-                }else{
+                    fs.writeFile(this.ruta, JSON.stringify(res, null, 2))
+                    console.log("echo");
+                } else {
                     console.log("Id no encontrado");
-                     
+
                 }
-                
+
             })
 
 
@@ -43,6 +43,7 @@ class File {
         try {
 
             let objet = await this.getAll();
+
             let newId;
 
             if (objet.length === 0) {
@@ -56,28 +57,28 @@ class File {
             }
 
 
-            const newObj = { ...data, id: newId };
+            const newObj = { ...data, id: newId, Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}` };
 
             objet.push(newObj);
 
 
-            fs.writeFile(this.ruta, JSON.stringify(objet, null, 2));
+            await fs.writeFile(this.ruta, JSON.stringify(objet, null, 2));
 
-                return console.log(`Su id es:${newId}`);
+
 
         } catch (error) {
 
             throw new Error(`Error al guardar: ${error}`);
 
         }
-
     }
     async getById(id) {
         try {
+            
             const objetos = await this.getAll();
 
             const nuevoObjeto = objetos.find(elemento => elemento.id == id);
-            return JSON.stringify(nuevoObjeto);
+            return nuevoObjeto;
         }
         catch (error) {
             console.log(`Error en conseguir id ${error}`);
@@ -87,7 +88,7 @@ class File {
 
     async getAll() {
         try {
-            let objetos = JSON.parse(await fs.readFile(this.ruta, 'utf-8'));
+            const objetos = JSON.parse(await fs.readFile(this.ruta, 'utf-8'));
 
 
             return objetos;
@@ -101,10 +102,10 @@ class File {
 
     async deleteById(id) {
         try {
-
+            const ide= parseInt(id);
             const objetos = await this.getAll();
 
-            const nuevoObjeto = objetos.filter(elemento => elemento.id !== id);
+            const nuevoObjeto = objetos.filter(elemento => elemento.id !== ide);
             if (nuevoObjeto.length === objetos.length) {
                 throw new Error('no se encontro el id')
             }
@@ -126,4 +127,4 @@ class File {
     }
 }
 
-exports.module = File;
+module.exports = File;

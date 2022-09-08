@@ -1,0 +1,42 @@
+[
+  {
+    "Nombre": "Holanda",
+    "Descripcion": "",
+    "Codigo": 10023,
+    "Foto": "loca45arpal",
+    "Precio": 35000,
+    "Stock": 250,
+    "Fecha": "Thu Sep 08 2022 19:31:34",
+    "id": "1"
+  },
+  {
+    "Nombre": "Hola",
+    "Descripcion": "",
+    "Codigo": 10023,
+    "Foto": "loca45aal",
+    "Precio": 35000,
+    "Stock": 250,
+    "Fecha": "Thu Sep 08 2022 18:14:54",
+    "id": 2
+  },
+  {
+    "Nombre": "Hola",
+    "Descripcion": "",
+    "Codigo": 10023,
+    "Foto": "loca45aal",
+    "Precio": 35000,
+    "Stock": 250,
+    "Fecha": "Thu Sep 08 2022 18:14:55",
+    "id": 3
+  },
+  {
+    "Nombre": "Hola",
+    "Descripcion": "",
+    "Codigo": 10023,
+    "Foto": "loca45aal",
+    "Precio": 35000,
+    "Stock": 250,
+    "Fecha": "Thu Sep 08 2022 18:14:56",
+    "id": 4
+  }
+]

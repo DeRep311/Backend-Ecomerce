@@ -5,10 +5,11 @@ const controller = require('./controller');
 
 const router = express.Router();
 
+router.getAsync('/', controller.getProducts);
 router.getAsync('/:id', controller.getProducts);
-router.postAsync('/',Auth, controller.newProduct);
-router.putAsync('/:id',Auth ,controller.editProduct)
-router.deleteAsync('/:id',Auth ,controller.delete);
+router.postAsync('/', controller.newProduct);
+router.putAsync('/:id',  controller.editProduct)
+router.deleteAsync('/:id',  controller.delete);
 
 
-module.exports= router;
+module.exports = router;

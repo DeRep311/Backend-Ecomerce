@@ -1,12 +1,19 @@
 const File = require('./../../Services/FS/MFS')
-const DB = new File('./../../Services/FS/ProductDB.txt');
+const DB = new File('./Services/FS/ProductBD.txt');
 
 module.exports={
+    async GetAll(){
+        try {
+            const valor=await DB.getAll()
+            return valor;
+        } catch (error) {
+            console.log(error);
+        }
+    },
 async  ReadProdu(id){
        try {
-            DB.getById(id).then(res=>{
-                return res
-            })
+        const valor =DB.getById(id)
+        return valor;
        } catch (error) {
         console.log("no se encuentra el producto");
        }
@@ -33,7 +40,8 @@ async DeleteProduById(id) {
 
 async ModifyProduct(id ,data){
     try {
-        await DB.ModifyProduct(id, data);
+        await DB.ModifyById(id, data);
+        console.log("Melo");
     } catch (error) {
         console.log("No se encuentra la id o la informacion no esta correcta");
     }
