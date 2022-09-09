@@ -59,14 +59,8 @@ async AddProducts(idCart,Produ){
    try {
         await DB.getById(idCart).then(res=>{
             const data= res
-            const longitud= data['Productos'].length;
-           
-                
-                data['Productos'][1]=Produ
-          
-            
+            data['Productos']= Produ;
             DB.ModifyById(idCart,data);
-            return console.log("echo");
         })
    } catch (error) {
        console.log(error);
@@ -96,12 +90,14 @@ async ReadProductCart(id) {
 async DeleteProductCart(id, idProdu) {
     try {
         await DB.getById(id).then(res => {
-            const data = JSON.parse(res, null, 2)
+            console.log(res);
+            const data = res
+                console.log(data.Productos);
 
-            if (data.Producto == null) {
+            if (data.Productos == null||undefined) {
                 console.log("Este carrito no tiene productos");
             } else {
-                const indice = data.Producto.findIndex(elemento=>elemento.id==idProdu)
+                const indice = data.Productos.findIndex(elemento=>elemento.id==idProdu)
                 data.Producto.splice(indice,1)
                 this.ModifyById(id, data)
             }

@@ -27,17 +27,24 @@ module.exports = {
     },
     async addProduct(req, res) {
         //Comentar sobre inconcistencia con la tarea
-        const id = req.params.id;
-        const producto = {
-            Nombre: req.body.Nombre,
-            Descripcion: "",
-            Codigo: req.body.Codigo,
-            Foto: req.body.URLimg,
-            Precio: req.body.Precio,
-            Stock: req.body.Stock,
-            Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`
-        }
-        await addProduCart(id, producto)
+       try {
+            const id = req.params.id;
+            const producto = {
+                Nombre: req.body.Nombre,
+                Descripcion: "",
+                Codigo: req.body.Codigo,
+                Foto: req.body.URLimg,
+                Precio: req.body.Precio,
+                Stock: req.body.Stock,
+                Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
+                id: req.body.id
+            }
+            await addProduCart(id, producto)
+                res.send(`Producto ingresado`)
+       } catch (error) {
+           console.log(error);
+            res.send(`Error intentelo nuevamente`)   
+       }
     },
     async deleteCartProd(req, res) {
         const id= req.params.id;
