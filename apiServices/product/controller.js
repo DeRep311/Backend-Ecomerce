@@ -33,7 +33,7 @@ module.exports = {
                 await Prod.getAllProdu().then(resu => {
                     console.log(resu);
                     res.send(resu)
-                    
+                  
                 })
                                
                 

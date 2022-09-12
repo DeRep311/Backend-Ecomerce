@@ -5,7 +5,7 @@ const controller = require('./controller');
 
 const router = express.Router();
 
-router.getAsync('/', controller.getProducts);
+router.getAsync('/',controller.getProducts);
 router.getAsync('/:id', controller.getProducts);
 router.postAsync('/', controller.newProduct);
 router.putAsync('/:id',  controller.editProduct)

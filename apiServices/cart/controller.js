@@ -3,7 +3,7 @@ const { getProduCart, addProduCart, newCart, deleteCart, DeleteProdu, AllCarts }
 
 module.exports = {
     async newCart(req, res) {
-        await newCart({ Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}` })
+        await newCart({ Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`, Productos:[] })
         let valor_id=await AllCarts().then(resu=>{
            
         res.send(`Nuevo carrito creado id:${resu.length}`)
@@ -49,7 +49,14 @@ module.exports = {
     async deleteCartProd(req, res) {
         const id= req.params.id;
         const idProdu= req.params.id_prod;
-        await  DeleteProdu(id, idProdu)
+        await  DeleteProdu(id, idProdu).then(resu=>{
+            if (resu==null) {
+                res.send("El producto no existe o este carrito no tiene productos")
+            } else {
+                res.send("Producto eliminado correctamente")
+            }
+        })
+        
     }
 
 }

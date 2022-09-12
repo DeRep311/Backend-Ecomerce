@@ -59,7 +59,17 @@ async AddProducts(idCart,Produ){
    try {
         await DB.getById(idCart).then(res=>{
             const data= res
-            data['Productos']= Produ;
+            if (data.Productos.length === 0) {
+
+                newId = 1;
+
+            } else {
+
+                newId = data.Productos[data.Productos.length - 1].id + 1;
+
+            }
+            datosFinally={...Produ, id:newId}
+            data.Productos.push(datosFinally)
             DB.ModifyById(idCart,data);
         })
    } catch (error) {
@@ -71,15 +81,17 @@ async ReadProductCart(id) {
     try {
         const data = await DB.getById(id)
             
+            console.log(data.Productos);
             
-            
-            if (data.Producto==null) {
+            if (data.Productos.length==0) {
                 console.log("Este carrito no tiene productos");
+                return null
             }else{
-            data.Producto.forEach(x => {
-                return console.log(x);
+                const valor=[]
+            data.Productos.forEach(x => {
+                valor.push(x);
             });
-            
+            return valor
         
         }
     } catch (error) {
@@ -89,19 +101,26 @@ async ReadProductCart(id) {
 },
 async DeleteProductCart(id, idProdu) {
     try {
-        await DB.getById(id).then(res => {
-            console.log(res);
+        const retorno = await DB.getById(id).then(res => {
+          
             const data = res
-                console.log(data.Productos);
-
-            if (data.Productos == null||undefined) {
-                console.log("Este carrito no tiene productos");
+                
+ 
+            if (data.Productos.length === 0) {
+                return null
             } else {
                 const indice = data.Productos.findIndex(elemento=>elemento.id==idProdu)
-                data.Producto.splice(indice,1)
-                this.ModifyById(id, data)
+                if (indice==-1) {
+                    return null;
+                } else {
+                    data.Productos.splice(indice,1)
+                DB.ModifyById(id, data)
+                return 1
+                }
+                
             }
         })
+        return retorno
     } catch (error) {
         console.log(error);
     }

@@ -36,7 +36,15 @@ module.exports = {
      },
      async DeleteProdu(id, idProdu) {
           try {
-               await fs.DeleteProductCart(id, idProdu)
+               
+               const retorno = await fs.DeleteProductCart(id, idProdu).then(resu=>{
+                    if (resu!==null) {
+                         return 1
+                    } else {
+                         return null
+                    }
+               })
+               return retorno
           } catch (error) {
                console.log(error);
           }
