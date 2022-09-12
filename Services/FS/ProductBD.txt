@@ -6,37 +6,17 @@
     "Foto": "loca45arpal",
     "Precio": 35000,
     "Stock": 250,
-    "Fecha": "Thu Sep 08 2022 19:31:34",
-    "id": "1"
+    "Fecha": "Sun Sep 11 2022 18:54:38",
+    "id": 1
   },
   {
-    "Nombre": "Hola",
+    "Nombre": "random",
     "Descripcion": "",
-    "Codigo": 10023,
-    "Foto": "loca45aal",
-    "Precio": 35000,
-    "Stock": 250,
-    "Fecha": "Thu Sep 08 2022 18:14:54",
-    "id": 2
-  },
-  {
-    "Nombre": "Hola",
-    "Descripcion": "",
-    "Codigo": 10023,
-    "Foto": "loca45aal",
-    "Precio": 35000,
-    "Stock": 250,
-    "Fecha": "Thu Sep 08 2022 18:14:55",
-    "id": 3
-  },
-  {
-    "Nombre": "Hola",
-    "Descripcion": "",
-    "Codigo": 10023,
-    "Foto": "loca45aal",
-    "Precio": 35000,
-    "Stock": 250,
-    "Fecha": "Thu Sep 08 2022 18:14:56",
-    "id": 4
+    "Codigo": 13,
+    "Foto": "lorpal",
+    "Precio": 30,
+    "Stock": 20,
+    "Fecha": "Sun Sep 11 2022 18:55:50",
+    "id": "2"
   }
 ]

@@ -1,22 +1,36 @@
 [
   {
-    "Fecha": "Thu Sep 08 2022 19:47:20",
+    "Fecha": "Sun Sep 11 2022 20:17:10",
+    "Productos": [
+      {
+        "Nombre": "randomm",
+        "Descripcion": "",
+        "Codigo": 13,
+        "Precio": 30,
+        "Stock": 20,
+        "Fecha": "Sun Sep 11 2022 20:17:56",
+        "id": 1
+      },
+      {
+        "Nombre": "randomm",
+        "Descripcion": "",
+        "Codigo": 13,
+        "Precio": 30,
+        "Stock": 20,
+        "Fecha": "Sun Sep 11 2022 20:18:00",
+        "id": 2
+      }
+    ],
     "id": 1
   },
   {
-    "Fecha": "Thu Sep 08 2022 19:49:36",
-    "id": 3,
-    "Productos": {
-      "Nombre": "Holanda",
-      "Descripcion": "",
-      "Codigo": 10023,
-      "Precio": 35000,
-      "Stock": 250,
-      "Fecha": "Thu Sep 08 2022 20:52:07"
-    }
+    "Fecha": "Sun Sep 11 2022 20:17:15",
+    "Productos": [],
+    "id": 2
   },
   {
-    "Fecha": "Thu Sep 08 2022 19:50:37",
-    "id": 4
+    "Fecha": "Sun Sep 11 2022 20:17:16",
+    "Productos": [],
+    "id": 3
   }
 ]
