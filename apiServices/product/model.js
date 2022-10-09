@@ -1,4 +1,4 @@
-const fsP = require('./dao')
+const fsP = require('./daoM')
 module.exports = {
      async newProdu(data) {
           try {

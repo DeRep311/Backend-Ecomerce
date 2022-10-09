@@ -4,7 +4,7 @@ module.exports = {
         try {
             const producto = {
                 Nombre: req.body.Nombre,
-                Descripcion: "",
+                Descripcion: req.body.Descripcion,
                 Codigo: req.body.Codigo,
                 Foto: req.body.Foto,
                 Precio: req.body.Precio,
