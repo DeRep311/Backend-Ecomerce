@@ -2,7 +2,8 @@ const fsP = require('./daoM')
 module.exports = {
      async newProdu(data) {
           try {
-               await fsP.WriteProdu(data)
+              const datos= await fsP.WriteProdu(data)
+              return datos
           } catch (error) {
                console.log(error);
 
@@ -36,7 +37,7 @@ module.exports = {
           try {
                await fsP.ModifyProduct(id, data)
           } catch (error) {
-
+               console.log(error);
           }
      }
 

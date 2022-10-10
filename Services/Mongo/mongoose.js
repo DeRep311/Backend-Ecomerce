@@ -4,7 +4,7 @@ try {
  // Connect to the MongoDB cluster
  mongoose.connect(
   'mongodb+srv://DeRep:nose1234@cluster0.dc3f8gz.mongodb.net/test',
-   { useNewUrlParser: true, useUnifiedTopology: true },
+   { useNewUrlParser: false, useUnifiedTopology: false },
    () => console.log(" Mongoose is connected")
  );
  
@@ -15,30 +15,36 @@ const schem = new Schema({
  
  Nombre: {
    type: String,
-   required: true
+   required: false
+   
  },
  Descripcion: {
    type: String,
-   required: true
+   required: false
+  
  
  },
  Codigo: {
    type: Number,
-   required: true
+   required: false
+ 
  },
  Foto: {
    type: String,
-   required: true
+   required: false
+
  },
  Precio: {
    type: Number,
-   required: true,
+   required: false,
+ 
    min: 0
  
  },
  Stock: {
    type: Number,
-   required: true,
+   required: false,
+   
    min: 0
  }
  
@@ -49,16 +55,18 @@ const schemBuy = new Schema({
  
  Fecha: {
    type: Date,
-   required: true
+   required: false
  },
  Productos: {
    type: schem,
-   required: true
+   required: false,
+   default:{}
  }
  
  
 })
-const BaseProd = mongoose.model('Produ', schem);
-const BaseCart = mongoose.model('cart', schemBuy);
+
  
-module.exports= mongoose.model('Produ', schem);
+exports.Produ= mongoose.model('Produ', schem);
+exports.Cart= mongoose.model('cart', schemBuy);
+ 

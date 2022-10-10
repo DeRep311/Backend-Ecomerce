@@ -3,7 +3,7 @@ const DB = new CRUD(1);
 module.exports={
    async GetAll(){
        try {
-           const valor=await DB.Read("All")
+           const valor=await DB.Read()
            return valor;
        } catch (error) {
            console.log(error);
@@ -20,8 +20,9 @@ async ReadProdu(id){
  
 async WriteProdu(data){
    try {
-       await DB.Create(data)
-       return console.log(`done`);
+       const datos= await DB.Create(data)
+      console.log(`done`);
+      return datos
    } catch (error) {
        console.log(error);
    }
@@ -42,7 +43,7 @@ async ModifyProduct(id ,data){
        await DB.Update(id, data);
        console.log("Melo");
    } catch (error) {
-       console.log("No se encuentra la id o la informacion no esta correcta");
+       console.log("No se encuentra la id o la informacion no esta correcta  "+error);
    }
 }
  

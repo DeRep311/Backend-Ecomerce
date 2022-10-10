@@ -11,10 +11,10 @@ module.exports = {
                 Stock: req.body.Stock,
                 Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`
             }
-            await Prod.newProdu(producto);
-            res.send(`${JSON.stringify(producto)} Ya ingresado`)
+           const id= await Prod.newProdu(producto);
+            res.send(`${JSON.stringify(producto)} Ya ingresado, su id es ${id}`)
         } catch (error) {
-
+            console.log(error);
         }
     },
     async delete(req, res) {
@@ -23,7 +23,7 @@ module.exports = {
             await Prod.deleteProdu(id);
             res.send(`Producto elminado correctamente :)`)
         } catch (error) {
-
+            console.log(error);
         }
     },
     async getProducts(req, res) {
@@ -50,19 +50,23 @@ module.exports = {
         }
     },
     async editProduct(req, res) {
-        const ide = req.params.id;
-        const producto = {
-            Nombre: req.body.Nombre,
-            Descripcion: "",
-            Codigo: req.body.Codigo,
-            Foto: req.body.Foto,
-            Precio: req.body.Precio,
-            Stock: req.body.Stock,
-            Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
-            id: ide
-         
+        try {
+            const ide = req.params.id;
+            const producto = {
+                Nombre: req.body.Nombre,
+                Descripcion: req.body.Descripcion,
+                Codigo: req.body.Codigo,
+                Foto: req.body.Foto,
+                Precio: req.body.Precio,
+                Stock: req.body.Stock,
+                Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
+                
+             
+            }
+            await Prod.ModProdu(ide, producto);
+            res.send(`Datos ingresados con exito`)
+        } catch (error) {
+            console.log(error);
         }
-        await Prod.ModProdu(ide, producto);
-        res.send(`Datos ingresados con exito`)
-    },
+    }
 }

@@ -1,105 +1,107 @@
-const BaseProd = require("./mongoose");
- 
- 
- 
- 
+const Base = require("./mongoose");
+
+const ObjectId = require('mongoose').Types.ObjectId
+
+
+
 class CRUD {
-   constructor(Select) {
-    
-       if (Select == 1) {
-            this.bd = BaseProd;
-       } else {
-           this.bd = BaseCart;
-       }
-   }
- 
-   async Create(param) {
+    constructor(Select) {
+
+        if (Select == 1) {
+            this.bd = Base.Produ;
+        } else {
+            this.bd = Base.Cart;
+        }
+    }
+
+    async Create(param) {
         console.log(param);
-       const data = await new this.bd(param)
-       data.save().then(data => console.log(data)).catch(err => console.log(err))
-   }
- 
-   async Read(id_nom) {
-       const param = typeOf(id_nom)
-       let data;
-       switch (param) {
-           case 'number':
-               data = await this.dateb.findById(id_nom)
-               return data
-              
- 
-           case 'String':
-               data = await this.dateb.findOne({ Nombre: id_nom })
-               return data
-              
- 
-           case "undefined":
-               console.log("Undefinido");
-       }
-   }
-   async Update(id, params) {
-       const param = typeOf(id_nom)
-       const option = { new: true }
-       const dat = { $set: params }
-       let data;
-       switch (param) {
-           case 'number':
-               data = await this.dateb.findByIdAndUpdate(id_nom, dat, option, (err, doc) => {
-                   if (err) {
-                       console.log("error");
-                   } else {
-                       return doc
-                   }
-               })
-               return data
- 
- 
-           case 'String':
-               data = await this.dateb.findOneAndUpdate({ Nombre: id }, dat, option, (err, doc) => {
-                   if (err) {
-                       console.log("error");
-                   } else {
-                       return doc;
-                   }
-               })
-               return data
- 
- 
-           default:
-               console.log("Undefinido");
-               break;
-       }
-   }
- 
-   async Delete(id_nom){
-       const param = typeOf(id_nom)
-       let data;
-       switch (param) {
-           case 'number':
-               data = await this.dateb.findByIdAndDelete(id_nom,(err)=>{
-                   if(err){
-                       console.log(err);
-                   }
-               })
-               return "success"
-               break;
- 
-           case 'String':
-               data = await this.dateb.findOneAndDelete({ Nombre: id },(err)=>{
-                   if(err){
-                       console.log(err);
-                   }
-               })
-               return "success"
-           case "undefined":
-               console.log("Undefinido");
-       }
- 
-   }
+        const data = await new this.bd(param)
+        return data.save().then(data => data._id).catch(err => console.log(err))
+    }
+    isValidObjectId(id) {
+
+        if (ObjectId.isValid(id)) {
+            if ((String)(new ObjectId(id)) === id)
+                return true;
+            return false;
+        }
+        return false;
+    }
+
+    async Read(id_nom) {
+        const param = this.isValidObjectId(id_nom)
+
+        if (param) {
+            const data = await this.bd.findById(id_nom)
+            return data
+        } else {
+            console.log(typeof (id_nomb));
+            if (typeof (id_nom) === "string") {
+                const data = await this.bd.findOne({ Nombre: id_nom })
+                return data
+            } else {
+                const data = await this.bd.find()
+                return data
+            }
+        }
+
+    }
+    async Update(id_nomb, params) {
+
+        const option = { new: true }
+        const dat = { $set: params }
+        let data;
+
+
+
+        const param = this.isValidObjectId(id_nomb)
+
+        if (param) {
+            data = await this.bd.findOneAndUpdate({_id: id_nomb},dat)
+            return data
+         
+           
+        }else {
+            console.log(typeof (id_nomb));
+            if (typeof (id_nomb) === "string") {
+                data = this.bd.findOneAndUpdate({ Nombre: id_nomb }, dat)
+                return data
+            } else {
+                console.log("Undefinido");
+                return null
+            }
+        }
+       
+    }
+
+    async Delete(id_nomb) {
+        let data;
+        const param = this.isValidObjectId(id_nomb)
+
+        if (param) {
+            data = await this.bd.deleteOne({_id: id_nomb})
+           
+         
+           
+        }else {
+            console.log(typeof (id_nomb));
+            if (typeof (id_nomb) === "string") {
+                data = this.bd.deleteOne({ Nombre: id_nomb })
+                
+            } else {
+                console.log("Undefinido");
+                return null
+            }
+        }
+
+
+       
+    }
 }
- 
- 
- 
- 
- 
-module.exports= CRUD
+
+
+
+
+
+module.exports = CRUD

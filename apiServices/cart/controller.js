@@ -3,7 +3,7 @@ const { getProduCart, addProduCart, newCart, deleteCart, DeleteProdu, AllCarts }
 
 module.exports = {
     async newCart(req, res) {
-        await newCart({ Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`, Productos:[] })
+        await newCart({ Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,})
         let valor_id=await AllCarts().then(resu=>{
            
         res.send(`Nuevo carrito creado id:${resu.length}`)
@@ -31,7 +31,7 @@ module.exports = {
             const id = req.params.id;
             const producto = {
                 Nombre: req.body.Nombre,
-                Descripcion: "",
+                Descripcion: req.body.Descripcion,
                 Codigo: req.body.Codigo,
                 Foto: req.body.URLimg,
                 Precio: req.body.Precio,
