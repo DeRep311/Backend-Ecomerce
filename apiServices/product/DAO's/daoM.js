@@ -1,5 +1,5 @@
-const CRUD= require('./../../Services/Mongo/MongoDB');
-const DB = new CRUD(1);
+const CRUD= require('./../../../Services/Databases/Mongo/MongoDB')
+const DB = new CRUD('Prod');
 module.exports={
    async GetAll(){
        try {

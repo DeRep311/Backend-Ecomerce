@@ -1,58 +1,98 @@
-const fs = require('./daoM')
+const log = require('winston')
+const { genericMail } = require('../../Services/Contact/nodmailer')
+const { Mensagge } = require('../../Services/Contact/twilio')
+const DB = require("./DAO's/daoM")
+const { productos } = require('./DTO')
 module.exports = {
      async newCart(data) {
           try {
-               await fs.WriteCart(data)
+               const carrito = {
+                    Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
+                    Producto: []
+               }
+               return carrito
           } catch (error) {
-               console.log(error);
+               log.error(error)
+               return false
+
 
           }
      },
      async deleteCart(id) {
           try {
-               await fs.DeleteCartById(id)
+               await DB.DeleteCartById(id)
           } catch (error) {
-               console.log(error);
+               log.error(error);
           }
      },
-     async getProduCart(id) {
+     async getProduCart(cart) {
           try {
-          const valor =await fs.ReadProductCart(id)
-          return valor
+               const valor = cart.Producto
+               if (valor == {}) {
+                    return false
+               } else {
+                    return valor
+               }
           } catch (error) {
-               console.log(error);
+               log.error(error);
+               return false
           }
      },
-     async addProduCart(id, produ) {
+     async addProduCart(produ) {
           try {
-
-               await fs.AddProducts(id, produ)
-
-
+               const producto = await DB.AddProducts(produ)
+               if (producto) {
+                    producto.fechaIngreso = `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`
+                    return producto
+               } else {
+                    return 'no se encuentra el producto'
+               }
           } catch (error) {
-               console.log(error);
+               log.error(error);
+               return false
           }
 
      },
-     async DeleteProdu(id, idProdu) {
+     async DeleteProdu(id, Produ) {
           try {
-               
-               const retorno = await fs.DeleteProductCart(id, idProdu).then(resu=>{
-                    if (resu!==null) {
-                         return 1
-                    } else {
-                         return null
-                    }
-               })
-               return retorno
+               if (typeof id == 'string') {
+                    const datos = Produ.Producto.filter(x => x.Nombre !== id)
+                    Produ.Producto = datos
+                    return Produ
+               } else {
+                    const datos = Produ.Producto.filter(x => x._id !== id)
+                    Produ.Producto = datos
+                    return Produ
+               }
+
           } catch (error) {
-               console.log(error);
+               log.error(error);
+               return false
           }
      },
      async AllCarts() {
-          const valor= await fs.ReadAllCart()
-          return valor
+          try {
+               const valor = await DB.ReadAllCart()
+               return valor
+          } catch (error) {
+               console.log(error);
+               log.error(error)
+          }
+     },
+     async Allbuy(DataUser, cart) {
+          const email = DataUser.Email
+          const produ = await productos(cart)
+          try {
+               const bodywpp = `El pedido es de ${DataUser.Username}, email: ${email}: ${produ}`
+               const info= await genericMail(email, DataUser, produ)
+               log.info(info)
+               await Mensagge(bodywpp)
+          } catch (error) {
+               log.error(error) 
+          }
+
+
+
+
      }
-
-
-}
+} 

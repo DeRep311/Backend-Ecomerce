@@ -1,11 +1,9 @@
 module.exports={
-    Auth(req, res, next){
-        const admin = true;
-        if (admin) {
-            next();
-        } else {
-            res.status(403).json({'error': 'No tiene el permiso necesario'})
+   isAutenticated(req, res, next){
+        if (req.isAuthenticated()) {
+            return next()
         }
+        res.redirect('/signin')
     }
 
 }

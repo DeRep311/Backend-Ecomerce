@@ -1,62 +1,85 @@
-const { getProduCart, addProduCart, newCart, deleteCart, DeleteProdu, AllCarts } = require('./model');
-
+const { getProduCart, addProduCart, newCart, deleteCart, DeleteProdu, AllCarts, Allbuy } = require('./model');
+const log = require('winston');
+const { Console } = require('winston/lib/winston/transports');
 
 module.exports = {
     async newCart(req, res) {
-        await newCart({ Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,})
-        let valor_id=await AllCarts().then(resu=>{
-           
-        res.send(`Nuevo carrito creado id:${resu.length}`)
-        })
+       
+       if (!req.session.Cart) {
+         const cart= await newCart()
+         log.info(cart)
+         if (cart) {
+             req.session.Cart= cart
+             res.send(`Su carrito fue creado: ${JSON.stringify(req.session.Cart)}`)
+         }
+       }else{
+        res.send('Ya tiene un carrito creado')
+       }
+        
         
     },
     async deleteCart(req, res) {
-        const id = req.params.id;
-        await deleteCart(id);
-        res.send(`Carrito id:${id} eliminado`)
+        delete req.session.Cart;
+        res.send(`Carrito a sido eliminado`)
     },
     async getCartProd(req, res) {
-        const id = req.params.id;
-        const productos = await getProduCart(id)
-        if (productos==null) {
-            res.send("el id no se encuentra o no tiene productos")
+        const cart = req.session.Cart;
+        const productos = await getProduCart(cart)
+        if (productos) {
+           res.send(productos)
+           
         } else {
-            res.send(productos)
+            res.send("No tiene productos")
         }
 
     },
     async addProduct(req, res) {
-        //Comentar sobre inconcistencia con la tarea
+     
        try {
-            const id = req.params.id;
-            const producto = {
-                Nombre: req.body.Nombre,
-                Descripcion: req.body.Descripcion,
-                Codigo: req.body.Codigo,
-                Foto: req.body.URLimg,
-                Precio: req.body.Precio,
-                Stock: req.body.Stock,
-                Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
-                id: req.body.id
-            }
-            await addProduCart(id, producto)
+        var id = req.body.id;
+        id=await addProduCart(id)
+        var produ;
+        if (req.session.Cart.Producto) {
+           
+            if (id) {
+                produ= id[0];
+                req.session.Cart.Producto.push(produ)
                 res.send(`Producto ingresado`)
+            } else {
+                res.status(400).send('Producto no encontrado');
+            }
+
+        } else {
+            
+            if (id) {
+                req.session.Cart.Producto= id
+                res.send(`Producto ingresado`)
+            } else {
+                res.status(400).send('Producto no encontrado');
+            }
+          
+        }
+           
        } catch (error) {
-           console.log(error);
+           log.error(error);
             res.send(`Error intentelo nuevamente`)   
        }
     },
     async deleteCartProd(req, res) {
-        const id= req.params.id;
-        const idProdu= req.params.id_prod;
-        await  DeleteProdu(id, idProdu).then(resu=>{
-            if (resu==null) {
-                res.send("El producto no existe o este carrito no tiene productos")
-            } else {
-                res.send("Producto eliminado correctamente")
-            }
-        })
+      const id = req.params.id_prod;
+      const datos= await DeleteProdu(id, req.session.Cart)
+      req.session.Cart= datos
+      res.send('Producto borrado correctamente')
+
         
+    },
+    async buy(req,res){
+        NecesaryData= req.user
+        cart= req.session.Cart
+        
+        const validation= await Allbuy(NecesaryData,cart)
+
+
     }
 
 }
