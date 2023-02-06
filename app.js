@@ -67,7 +67,7 @@ app.engine('hbs', engine({
     extname: '.hbs',
     defaultLayout: 'index.hbs',
     layoutsDir: path.join(__dirname + '/Public/Views/Layout'),
-    partialsDir: path.join(__dirname + '/Public/Views/partials')
+    partialsDir: path.join(__dirname + '/Public/Views/Partials')
 }))
 
 //Routes
