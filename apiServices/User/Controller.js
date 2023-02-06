@@ -21,12 +21,12 @@ const Singup = async (req, res, next) => {
 }
 const SingupGet = (req, res) => {
     //validacion de el estado de conexion (por defecto va ser false ya que para el usuario logeado no esta disponible la opcion de registrarse)
-    res.render('pages/Register', { status: req.session.Status.Validate })
+    res.render('Pages/Register', { status: req.session.Status.Validate })
 }
 const Signin = async (req, res) => {
     //verifica la session para no logearse nuevamente sin sentido
     if (req.session.Status.Validate) {
-        res.render('pages/LoginStatus', { status: true, Message: 'Usted ya esta logeado' })
+        res.render('Pages/LoginStatus', { status: true, Message: 'Usted ya esta logeado' })
     } else {
         const { user, pass } = req.body
         const status = await Login(user, pass)
@@ -34,11 +34,11 @@ const Signin = async (req, res) => {
         if (status.Validate) {
             //si es true le da la validacion
             req.session.Status = status
-            res.render('pages/LoginStatus', { status: status.Validate, Message: status.message })
+            res.render('Pages/LoginStatus', { status: status.Validate, Message: status.message })
 
         } else {
             // sino le muestra cual fue el error
-            res.render('pages/LoginStatus', { status: status.Validate, Message: status.message })
+            res.render('Pages/LoginStatus', { status: status.Validate, Message: status.message })
 
         }
     }
@@ -49,12 +49,12 @@ const signinGet = (req, res) => {
     var confirm
     //Verifica si tiene validacion del token
     req.UserId ? confirm = true : confirm = false
-    res.render('pages/login', { status: confirm })
+    res.render('Pages/Login', { status: confirm })
 }
 const profile = async (req, res, next) => {
    
     const User = await datauser(req.UserId)
-    res.render('pages/Profile',{
+    res.render('Pages/Profile',{
         Username: User.Username,
         Name: User.Name,
         prefij: User.prefij,
