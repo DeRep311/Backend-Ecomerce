@@ -69,7 +69,7 @@ const home = (req, res) => {
     var confirm
     //Verifica si tiene validacion del token ya decodificado
     req.UserId ? confirm = true : confirm = false
-    res.render('pages/home', { status: confirm })
+    res.render('Pages/Home', { status: confirm })
 }
 
 module.exports = {
