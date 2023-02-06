@@ -76,7 +76,7 @@ app.use('/api', services);
 app.use('/', users)
 
 //le doy los archivos necesarios para que se ejecute correctamente el chat global
-app.use('/ChatGlobal',express.static(__dirname + '/public/Chat'))
+app.use('/ChatGlobal',express.static( path.join(__dirname + '/public/Chat')))
 sockets(io);
 
 
