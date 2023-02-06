@@ -1,47 +1,89 @@
-const dotenv= require('dotenv')
-dotenv.config({path:"./.env"})
+
+//dependences & config 
+const express = require('express');
+const app = express();
+const { Server : websocketServer }=require ("socket.io");
+const { Server : HTTPServer}= require ('http');
+const http = new HTTPServer(app);
+const io = new websocketServer(http);
+const sockets= require('./Services/WebSockets/sockets')
+
+const dotenv = require('dotenv')
+dotenv.config({ path: "./.env" })
+
 const services = require('./routes/service.js')
 const users = require('./routes/user.js')
-const express = require('express');
-const path = require('path');
-const flash= require('connect-flash')
+
+const {engine}=require('express-handlebars')
 const morgan = require('morgan');
+const compression = require('compression')
 
 const session = require('express-session')
-const passport = require('passport')
+const minimist = require('minimist')
+const logger = require('./utils/logger')
+const mongoStore = require('connect-mongo')
 
 
-const port = process.env.PORT;
-const app = express();
-require('./Services/Passport/Passport-Local')
+
+const options = {
+    alias: {
+        "p": "PORT"
+    },
+    default: {
+        "PORT":8080
+    }
+};
+const { PORT } = minimist(process.argv.slice(2), options);
+
+//Inicio de DB
 require('./Services/Databases/Mongo/mongoose')
+
+
+//Middlewares & views
+
+//utilizo este middleware para comprimir las peticiones y sean un poco mas eficientes
+app.use(compression())
+
 app.use(morgan('dev'))
 app.use(express.json());
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(session({
+        store: mongoStore.create({
+        mongoUrl: process.env.MongoConfig,
+        options: {
+            userNewParser: true,
+            useUnifiedTopology: true,
+        }
+    }),
     secret: 'mongoSecret',
-    resave: false ,
+    resave: false,
     saveUninitialized: false,
 }))
-const logger=require('./utils/logger')
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash()) 
-app.use((req, res, next)=>{
-    app.locals.signup= req.flash('SignupMessage')
-    app.locals.signin= req.flash('SigninMessage')
-    app.locals.user= req.user
-    next();
- })
+app.set('views', './Public/Views');
+app.set('view engine', 'hbs');
+
+app.engine('hbs', engine({
+    extname: '.hbs',
+    defaultLayout: 'index.hbs',
+    layoutsDir: __dirname + '/Public/Views/Layout',
+    partialsDir: __dirname + '/Public/Views/partials'
+}))
+
+//Routes
+app.use(express.static('public'))
 app.use('/api', services);
 app.use('/', users)
-require('./Services/Passport/Passport-Local')
+
+//le doy los archivos necesarios para que se ejecute correctamente el chat global
+app.use('/ChatGlobal',express.static(__dirname + '/public/Chat'))
+sockets(io);
 
 
- 
-app.listen(port, (err)=>{
-    if (err) console.log("Error in server setup")
-    logger.info(`Su servidor escucha en el puerto ${port}`);
-   
+//Start
+http.listen(PORT, (err) => {
+    err
+        ? console.log("Error in server setup")
+        : logger.info(`Su servidor escucha en el puerto ${PORT}`);
+
 })
-module.exports=app;
+module.exports = app;

@@ -6,7 +6,7 @@ const router = express.Router();
 router.postAsync('/' ,controller.newCart)
 router.deleteAsync('/', controller.deleteCart)
 router.getAsync('/productos', controller.getCartProd)
-router.postAsync('/productos',controller.addProduct)
+router.postAsync('/productos/:id_prod',controller.addProduct)
 router.deleteAsync('/productos/:id_prod', controller.deleteCartProd)
 router.getAsync('/buy',isAutenticated,controller.buy)
 

@@ -1,0 +1,12 @@
+<h2>Login status</h2>
+ {{#if status}}
+        <h4>User logged in successfully</h4>
+         <a href="/" class="btn btn-primary btn-sm">Home</a>
+    {{else}}
+       <h4>Not logged in, {{Message}}</h4>
+       <a href="/signup" class="btn btn-primary btn-sm">Try again</a>
+        <a href="/" class="btn btn-primary btn-sm">Home</a>
+        <span class="small text-secondary">Don't have an account ? Create one <a href="/signup"><strong>here</strong></a></span>
+        
+    {{/if}}
+<div class="row g-3">

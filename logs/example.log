@@ -1,0 +1,64 @@
+{"level":"info","message":"Su servidor escucha en el puerto 8080"}
+ [LOGGER] 23-01-21 17:01:33  error : undefined 
+ [LOGGER] 23-01-21 17:01:73  error : undefined 
+ [LOGGER] 23-01-21 18:01:18  error : undefined 
+ [LOGGER] 23-01-21 18:01:41  error : undefined 
+ [LOGGER] 23-01-21 18:01:79  error : undefined 
+ [LOGGER] 23-01-21 18:01:52  error : undefined 
+ [LOGGER] 23-01-23 13:01:43  error : undefined 
+ [LOGGER] 23-01-23 13:01:70  error : undefined 
+ [LOGGER] 23-01-23 13:01:28  error : undefined 
+ [LOGGER] 23-01-28 13:01:07  error : {} 
+ [LOGGER] 23-01-29 12:01:52  error : jwt expired 
+ [LOGGER] 23-01-29 12:01:100  error : undefined 
+ [LOGGER] 23-01-29 12:01:01  error : undefined 
+ [LOGGER] 23-01-29 13:01:70  error : undefined 
+23-01-29 13:01:23 [[LOGGER]] error: undefined
+23-01-29 13:01:50 [[LOGGER]] error: undefined
+23-01-29 13:01:43 [[LOGGER]] error: undefined
+23-01-29 13:01:77 [[LOGGER]] error: undefined
+ [LOGGER] 23-01-29 14:01:13  error : undefined 
+ [LOGGER] 23-01-29 14:01:33  error : undefined 
+ [LOGGER] 23-01-29 14:01:53  error : undefined 
+ [LOGGER] 23-01-29 14:01:74  error : undefined 
+ [LOGGER] 23-02-01 10:02:86  error : undefined 
+ [LOGGER] 23-02-01 11:02:76  error : undefined 
+ [LOGGER] 23-02-01 11:02:97  error : undefined 
+ [LOGGER] 23-02-01 11:02:90  error : undefined 
+ [LOGGER] 23-02-01 11:02:53  error : undefined 
+ [LOGGER] 23-02-01 11:02:46  error : undefined 
+ [LOGGER] 23-02-03 10:02:91  error : undefined 
+ [LOGGER] 23-02-03 10:02:92  error : {} 
+ [LOGGER] 23-02-03 10:02:40  error : undefined 
+ [LOGGER] 23-02-03 10:02:64  error : {} 
+ [LOGGER] 23-02-03 10:02:52  error : undefined 
+ [LOGGER] 23-02-03 10:02:49  error : {} 
+ [LOGGER] 23-02-03 10:02:40  error : undefined 
+ [LOGGER] 23-02-03 10:02:59  error : {} 
+ [LOGGER] 23-02-03 10:02:48  error : undefined 
+ [LOGGER] 23-02-03 10:02:49  error : {} 
+ [LOGGER] 23-02-03 10:02:16  error : undefined 
+ [LOGGER] 23-02-03 10:02:69  error : {} 
+ [LOGGER] 23-02-03 11:02:92  error : undefined 
+ [LOGGER] 23-02-03 11:02:54  error : undefined 
+ [LOGGER] 23-02-03 11:02:52  error : undefined 
+ [LOGGER] 23-02-03 11:02:16  error : TypeError: res.Sendstatus is not a function
+    at editProduct (C:\Users\Administrator\Documents\GitHub\Final-Proyect\apiServices\product\controller.js:42:54)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async wrappedMiddleware (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\@awaitjs\express\index.js:64:9) 
+ [LOGGER] 23-02-03 11:02:42  error : TypeError: Cannot read properties of undefined (reading 'Validate')
+    at delete (C:\Users\Administrator\Documents\GitHub\Final-Proyect\apiServices\product\controller.js:18:20)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async wrappedMiddleware (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\@awaitjs\express\index.js:64:9) 
+ [LOGGER] 23-02-03 12:02:65  error : undefined 
+ [LOGGER] 23-02-03 12:02:72  error : undefined 
+ [LOGGER] 23-02-03 13:02:74  error : TypeError: this.bd.delete is not a function
+    at CRUD.Delete (C:\Users\Administrator\Documents\GitHub\Final-Proyect\Services\Databases\Mongo\Manager\ProductoManager.js:105:58)
+    at Object.DeleteProduById (C:\Users\Administrator\Documents\GitHub\Final-Proyect\apiServices\product\DAO.js:51:26)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async Object.deleteProdu (C:\Users\Administrator\Documents\GitHub\Final-Proyect\apiServices\product\model.js:46:23)
+    at async delete (C:\Users\Administrator\Documents\GitHub\Final-Proyect\apiServices\product\controller.js:17:28)
+    at async wrappedMiddleware (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\@awaitjs\express\index.js:64:9) 
+ [LOGGER] 23-02-05 17:02:09  error : {"code":"ERR_HTTP_INVALID_STATUS_CODE"} 
+ [LOGGER] 23-02-05 17:02:73  error : {"code":"ERR_HTTP_INVALID_STATUS_CODE"} 
+ [LOGGER] 23-02-05 17:02:58  error : {"code":"ERR_HTTP_INVALID_STATUS_CODE"} 

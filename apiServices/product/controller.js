@@ -1,72 +1,49 @@
+const log = require('winston');
 const Prod = require('./model');
+
 module.exports = {
     async newProduct(req, res) {
         try {
-            const producto = {
-                Nombre: req.body.Nombre,
-                Descripcion: req.body.Descripcion,
-                Codigo: req.body.Codigo,
-                Foto: req.body.Foto,
-                Precio: req.body.Precio,
-                Stock: req.body.Stock,
-                Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`
-            }
-           const id= await Prod.newProdu(producto);
-            res.send(`${JSON.stringify(producto)} Ya ingresado, su id es ${id}`)
+            //el tipo de respuesta esta preparado para implementarle vistas por eso la propiedad Status (echo para implementar un if en hbs por ej)
+            const Product = await Prod.newProdu(req.body);
+            res.json(Product)
         } catch (error) {
-            console.log(error);
+            log.error(error.stack);
         }
     },
     async delete(req, res) {
         try {
             const id = req.params.id;
-            await Prod.deleteProdu(id);
-            res.send(`Producto elminado correctamente :)`)
+            const status = await Prod.deleteProdu(id);
+            res.status(status.Error).send(status.Message)
+
         } catch (error) {
-            console.log(error);
+            log.error(error.stack);
         }
     },
     async getProducts(req, res) {
         try {
-            const id = req.params.id;
-            if (id === undefined) {
-                await Prod.getAllProdu().then(resu => {
-                    console.log(resu);
-                    res.send(resu)
-                  
-                })
-                               
-                
-            } else {
-                await Prod.getProdu(id).then(resp => {
-                    res.send(resp)
-                    console.log("llego");
-                })
-                
-            }
 
-        } catch (error) {
-            console.log(error);
+            const productos = await Prod.getAllProdu(req.params.id)
+            if (productos.Validate) {
+                res.render('pages/ListProduct',{Productos: productos.Product})
+            }
+            
+
+
+        } catch (error) { 
+            res.sendStatus(400)
+            log.error(JSON.stringify(error));
         }
     },
     async editProduct(req, res) {
         try {
             const ide = req.params.id;
-            const producto = {
-                Nombre: req.body.Nombre,
-                Descripcion: req.body.Descripcion,
-                Codigo: req.body.Codigo,
-                Foto: req.body.Foto,
-                Precio: req.body.Precio,
-                Stock: req.body.Stock,
-                Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
-                
-             
-            }
-            await Prod.ModProdu(ide, producto);
-            res.send(`Datos ingresados con exito`)
+            const status = await Prod.ModProdu(ide, req.body);
+            status.Validate ? res.json(status) : res.status(status.Error).send(status.Message)
+
         } catch (error) {
-            console.log(error);
+            log.error(error.stack);
         }
     }
 }

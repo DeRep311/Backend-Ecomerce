@@ -1,35 +1,86 @@
-const { Register, SingIn } = require("./Model")
-const passport = require('passport')
-const { Informacion } = require("./DTO")
+const path = require('path');
+const { Registro, Login, datauser } = require("./Model");
 
-const LogOut= (req, res)=>{
-        
-    req.logout()
-    res.redirect('/api/singin')
+const LogOut = (req, res) => {
+    req.session.Status = { Validate: false, Message: undefined, Token: undefined }
+    req.UserId = undefined
+    res.redirect('/')
 }
-const Singup= Register
-const SingupGet= (req,res)=>{
-    res.send(req.app.locals.signup)
+const Singup = async (req, res, next) => {
+    const { body } = req
+    const status = await Registro(body)
+    console.log(status);
+    if (!status.Validate) {
+        res.render('pages/RegisterOkay', { status: status.Validate, Message: status.message })
+
+    } else {
+        req.session.Status = status
+        res.render('pages/RegisterOkay', { status: status.Validate, Message: status.message })
+
     }
-const Signin= passport.authenticate(('local-signin'),{
-    successRedirect:'/api/profile',
-    failureRedirect:'/api/signin',
-    passReqToCallback: true
-})
+}
+const SingupGet = (req, res) => {
+    //validacion de el estado de conexion (por defecto va ser false ya que para el usuario logeado no esta disponible la opcion de registrarse)
+    res.render('pages/Register', { status: req.session.Status.Validate })
+}
+const Signin = async (req, res) => {
+    //verifica la session para no logearse nuevamente sin sentido
+    if (req.session.Status.Validate) {
+        res.render('pages/LoginStatus', { status: true, Message: 'Usted ya esta logeado' })
+    } else {
+        const { user, pass } = req.body
+        const status = await Login(user, pass)
+        //revisa si es valido el inicio de session si ya existe el correo, o el usuario
+        if (status.Validate) {
+            //si es true le da la validacion
+            req.session.Status = status
+            res.render('pages/LoginStatus', { status: status.Validate, Message: status.message })
 
-const signinGet= (req, res)=>{
-    res.send('Inicie sesion')
+        } else {
+            // sino le muestra cual fue el error
+            res.render('pages/LoginStatus', { status: status.Validate, Message: status.message })
+
+        }
+    }
+
 }
-const profile= async (req, res)=>{
-   data=await Informacion(req.user)
-    res.send(data)
+
+const signinGet = (req, res) => {
+    var confirm
+    //Verifica si tiene validacion del token
+    req.UserId ? confirm = true : confirm = false
+    res.render('pages/login', { status: confirm })
 }
-module.exports= {
+const profile = async (req, res, next) => {
+   
+    const User = await datauser(req.UserId)
+    res.render('pages/Profile',{
+        Username: User.Username,
+        Name: User.Name,
+        prefij: User.prefij,
+        status: true
+    })
+}
+const websockets = (req, res) => {
+
+    res.sendFile(path.join(__dirname, '../../Public/Chat/index.html'));
+}
+const home = (req, res) => {
+    var confirm
+    //Verifica si tiene validacion del token ya decodificado
+    req.UserId ? confirm = true : confirm = false
+    res.render('pages/home', { status: confirm })
+}
+
+module.exports = {
     LogOut,
     Singup,
     Signin,
     SingupGet,
     signinGet,
-   profile
+    profile,
+    websockets,
+    home
+
 }
 

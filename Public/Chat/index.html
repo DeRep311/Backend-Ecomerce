@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>socket</title>
+</head>
+
+<body>
+    
+
+    <form>
+        <input type="text" id="Name" name="name" />
+        <input type="text" id="price" name="price" />
+        <input type="text" id="img" name="img" />
+        <input type="button" id="submit" value="Submit">
+    </form>
+    
+    <div id="productos">
+
+    </div>
+
+
+    <div>
+        <h1>Centro de mensajes</h1>
+        <input type="text" id="mensaje" >
+        <button id="envio">Enviar!</button>
+        <div id="chat"></div>
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.2/socket.io.js"
+        integrity="sha512-VJ6+sp2E5rFQk05caiXXzQd1wBABpjEj1r5kMiLmGAAgwPItw1YpqsCCBtq8Yr1x6C49/mTpRdXtq8O2RcZhlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./main.js" type="module"></script>
+</body>
+
+</html>

@@ -1,9 +1,22 @@
+const passport = require("passport")
+const  jwt  = require('jsonwebtoken')
+const { Registro } = require("../apiServices/User/Model")
+
+
+
 module.exports={
-   isAutenticated(req, res, next){
-        if (req.isAuthenticated()) {
+    //Est middleware es muy similar al anterior pero la diferencia que es un midlleware bloqueante ya que el otro 
+    //solo verifica una conexion, este obliga a iniciar sesion (por ej cuando se quiere comprar o ver el perfil)
+  async isAutenticated(req, res, next){
+        if (req.session.Status.Validate) {
+           
+           const decoded= jwt.verify(req.session.Status.Token, process.env.SECRET)
+           req.UserId= decoded.id
             return next()
         }
+        req.Status.Message='Need have account and signin'
         res.redirect('/signin')
-    }
+    },
+   
 
-}
+} 

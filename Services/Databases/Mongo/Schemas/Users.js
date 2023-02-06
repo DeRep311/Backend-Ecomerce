@@ -9,8 +9,6 @@ const bcrypt = require('bcrypt')
     Email: String,
     Password: String,
     Name: String,
-    Adress: String,
-    Age: Number,
     Tel: Number,
     prefij: String
 

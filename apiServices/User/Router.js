@@ -1,26 +1,26 @@
-const express = require('express')
+const router = require('express').Router()
+
+const { VerifyStatus } = require('../../middleware/Status')
 const { isAutenticated } = require('../../middleware/Auth')
-const { Singin, LogOut, profile, Singup, SingupGet, signinGet } = require('./Controller')
-const passport = require('passport')
 
-const router = express.Router()
+const { LogOut, profile, Singup, SingupGet, signinGet, websockets, Signin, home } = require('./Controller')
 
 
 
-    //registro
-    router.get('/singup', SingupGet)
-    router.post('/singup', Singup)
-    //Inicio de sesion
-    router.post('/signin', passport.authenticate(('local-signin'),{
-        successRedirect:'/profile',
-        failureRedirect:'/signin',
-        passReqToCallback: true
-    }))
-    router.get('/signin', signinGet)
-    
-    //LogOut
-    router.get('/logout', isAutenticated, LogOut)
+//home
+router.get('/', VerifyStatus, home)
+//registro
+router.get('/signup', SingupGet)
+router.post('/signup', Singup)
+//Inicio de sesion
+router.post('/signin', VerifyStatus, Signin)
+router.get('/signin', signinGet)
+//Deslogearse
+router.get('/logout', isAutenticated, LogOut)
+//Chat global y perfil
+router.get('/profile', isAutenticated, profile)
+router.get('/chatglobal', websockets)
 
-    router.get('/profile', isAutenticated, profile)
 
-    module.exports=router;
+
+module.exports = router;

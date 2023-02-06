@@ -1,0 +1,10 @@
+<h2>Register status</h2>
+ {{#if status}}
+        <h4>User Registred</h4>
+         <a href="/" class="btn btn-primary btn-sm">Home</a>
+    {{else}}
+       <h4>Not registred, {{Message}}</h4>
+        <a href="/signup" class="btn btn-primary btn-sm">Try again</a>
+         <a href="/" class="btn btn-primary btn-sm">Home</a>
+    {{/if}}
+<div class="row g-3">

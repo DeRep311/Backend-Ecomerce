@@ -1,4 +1,4 @@
-const CRUD = require('./../../../Services/Databases/Mongo/MongoDB');
+const CRUD = require('../../Services/Databases/Mongo/Manager/ProductoManager');
 const DB = new CRUD('Prod');
 const log = require('winston')
 module.exports = {

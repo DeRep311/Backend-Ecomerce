@@ -1,7 +1,9 @@
 const log = require('winston')
-const { genericMail } = require('../../Services/Contact/nodmailer')
+const { MailBuy } = require('../../Services/Contact/nodmailer')
 const { Mensagge } = require('../../Services/Contact/twilio')
-const DB = require("./DAO's/daoM")
+const { deSerializer } = require('../User/DAO')
+const DB = require("./DAO")
+
 const { productos } = require('./DTO')
 module.exports = {
      async newCart(data) {
@@ -12,7 +14,7 @@ module.exports = {
                }
                return carrito
           } catch (error) {
-               log.error(error)
+               log.error(error.stack)
                return false
 
 
@@ -22,7 +24,7 @@ module.exports = {
           try {
                await DB.DeleteCartById(id)
           } catch (error) {
-               log.error(error);
+               log.error(error.stack);
           }
      },
      async getProduCart(cart) {
@@ -34,7 +36,7 @@ module.exports = {
                     return valor
                }
           } catch (error) {
-               log.error(error);
+               log.error(error.stack);
                return false
           }
      },
@@ -48,7 +50,7 @@ module.exports = {
                     return 'no se encuentra el producto'
                }
           } catch (error) {
-               log.error(error);
+               log.error(error.stack);
                return false
           }
 
@@ -66,7 +68,7 @@ module.exports = {
                }
 
           } catch (error) {
-               log.error(error);
+               log.error(error.stack);
                return false
           }
      },
@@ -75,20 +77,23 @@ module.exports = {
                const valor = await DB.ReadAllCart()
                return valor
           } catch (error) {
-               console.log(error);
-               log.error(error)
+               log.error(error.stack)
           }
      },
-     async Allbuy(DataUser, cart) {
+     async Allbuy(DataId, cart) {
+          const DataUser= await deSerializer(DataId)
           const email = DataUser.Email
           const produ = await productos(cart)
           try {
                const bodywpp = `El pedido es de ${DataUser.Username}, email: ${email}: ${produ}`
-               const info= await genericMail(email, DataUser, produ)
+               const info= await MailBuy(email, DataUser, produ)
                log.info(info)
+               //Se envia un mensaje al administrador (podria ser un repartidor), es funcional pero el servicio no esta contratado por ende espera verificacion desde twilio para enviarlo
                await Mensagge(bodywpp)
+               return true
           } catch (error) {
-               log.error(error) 
+               log.error(error.stack) 
+               return false
           }
 
 

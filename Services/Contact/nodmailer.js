@@ -33,7 +33,7 @@ const mailOptions =  (email, datos) => {
         const mail = {
             from: 'Servidor Node.js',
             to: `${email}`,
-            subjet: 'Probando mail',
+            subjet: 'Nuevo Registro',
             Text: `Son sus datos: <br>
                      Username: ${datos.username} <br>
                         Name: ${datos.name} <br>
@@ -49,7 +49,7 @@ const mailOptions =  (email, datos) => {
     }
 
 }
-const genericMail = async (email, datos, productos) => {
+const MailBuy = async (email, datos, productos) => {
     try {
         const info = transporter.sendMail(mailOptionsDelivery(email, datos, productos))
         log.info(info)
@@ -72,5 +72,5 @@ const enviomail = async (datos) => {
 }
 module.exports = {
     enviomail,
-    genericMail
+    MailBuy
 }
