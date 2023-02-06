@@ -21,7 +21,8 @@ const compression = require('compression')
 const session = require('express-session')
 const minimist = require('minimist')
 const logger = require('./utils/logger')
-const mongoStore = require('connect-mongo')
+const mongoStore = require('connect-mongo');
+const path = require('path');
 
 
 
@@ -65,8 +66,8 @@ app.set('view engine', 'hbs');
 app.engine('hbs', engine({
     extname: '.hbs',
     defaultLayout: 'index.hbs',
-    layoutsDir: __dirname + '/Public/Views/Layout',
-    partialsDir: __dirname + '/Public/Views/partials'
+    layoutsDir: path.join(__dirname + '/Public/Views/Layout'),
+    partialsDir: path.join(__dirname + '/Public/Views/partials')
 }))
 
 //Routes
