@@ -1,3 +1,4 @@
+const log = require('winston')
 const path = require('path');
 const { Registro, Login, datauser } = require("./Model");
 
@@ -61,8 +62,14 @@ const profile = async (req, res, next) => {
         status: true
     })
 }
-const websockets = (req, res) => {
-    res.sendFile(path.join(__dirname, '../../Public/Chat/index.html'));
+const websockets =async (req, res) => {
+    try {
+       
+        res.sendFile(path.join(__dirname, '../../Public/Chat'));
+    } catch (error) {
+        log.error(error.stack)
+        res.status(403).send("error")
+    }
 }
 const home = (req, res) => {
     var confirm
@@ -70,7 +77,9 @@ const home = (req, res) => {
     req.UserId ? confirm = true : confirm = false
     res.render('Pages/Home', { status: confirm })
 }
-
+const extractData = async (req,res) => {
+    res.json(req.session.User)
+}
 module.exports = {
     LogOut,
     Singup,
@@ -79,7 +88,8 @@ module.exports = {
     signinGet,
     profile,
     websockets,
-    home
+    home,
+    extractData
 
 }
 

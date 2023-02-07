@@ -20,7 +20,7 @@ class Menssages {
                 delete(obj['_id'])
             })
             return data
-    }
+    } 
    
 
     

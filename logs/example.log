@@ -62,3 +62,36 @@
  [LOGGER] 23-02-05 17:02:09  error : {"code":"ERR_HTTP_INVALID_STATUS_CODE"} 
  [LOGGER] 23-02-05 17:02:73  error : {"code":"ERR_HTTP_INVALID_STATUS_CODE"} 
  [LOGGER] 23-02-05 17:02:58  error : {"code":"ERR_HTTP_INVALID_STATUS_CODE"} 
+ [LOGGER] 23-02-07 11:02:63  error : TypeError: Cannot set properties of undefined (setting 'Message')
+    at isAutenticated (C:\Users\Administrator\Documents\GitHub\Final-Proyect\middleware\Auth.js:19:31)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:47:12) 
+ [LOGGER] 23-02-07 12:02:39  error : TypeError: Cannot set properties of undefined (setting 'Message')
+    at isAutenticated (C:\Users\Administrator\Documents\GitHub\Final-Proyect\middleware\Auth.js:19:31)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:47:12) 
+ [LOGGER] 23-02-07 12:02:06  error : TypeError: Cannot set properties of undefined (setting 'Message')
+    at isAutenticated (C:\Users\Administrator\Documents\GitHub\Final-Proyect\middleware\Auth.js:19:31)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:47:12) 

@@ -3,7 +3,7 @@ const router = require('express').Router()
 const { VerifyStatus } = require('../../middleware/Status')
 const { isAutenticated } = require('../../middleware/Auth')
 
-const { LogOut, profile, Singup, SingupGet, signinGet, websockets, Signin, home } = require('./Controller')
+const { LogOut, profile, Singup, SingupGet, signinGet, websockets, Signin, home, extractData} = require('./Controller')
 
 
 
@@ -19,7 +19,8 @@ router.get('/signin', signinGet)
 router.get('/logout', isAutenticated, LogOut)
 //Chat global y perfil
 router.get('/profile', isAutenticated, profile)
-router.get('/chatglobal', websockets)
+router.get('/chatglobal',isAutenticated, websockets)
+router.get('/datauser', extractData)
 
 
 

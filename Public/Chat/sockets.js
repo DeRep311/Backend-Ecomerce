@@ -4,7 +4,9 @@ const socket = io()
 //     const html= await obtenerPlantilla(productos)
 //     document.getElementById('productos').innerHTML=html
 // })
-let chat = document.getElementById('chat')
+// Get the value of the cookie
+
+
 export const LoadMessage = () => {
     socket.on('chatMessage', async dato => {
         let html
