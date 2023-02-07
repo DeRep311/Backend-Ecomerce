@@ -62,7 +62,6 @@ const profile = async (req, res, next) => {
     })
 }
 const websockets = (req, res) => {
-
     res.sendFile(path.join(__dirname, '../../Public/Chat/index.html'));
 }
 const home = (req, res) => {
