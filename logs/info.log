@@ -1772,3 +1772,143 @@
  [LOGGER] 23-02-07 12:02:31  info :  Mongoose is connected 
  [LOGGER] 23-02-07 12:02:81  info : Su servidor escucha en el puerto 8080 
  [LOGGER] 23-02-07 12:02:63  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 13:02:43  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 13:02:20  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 13:02:12  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 13:02:04  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 14:02:42  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 14:02:62  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 14:02:93  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 14:02:90  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 14:02:02  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 14:02:84  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 14:02:13  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 14:02:94  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 18:02:65  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 18:02:44  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 19:02:61  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 19:02:73  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 19:02:78  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 19:02:55  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 19:02:37  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 19:02:46  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 19:02:30  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 19:02:75  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 19:02:59  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:83  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:66  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:04  info : [object Object] 
+ [LOGGER] 23-02-07 20:02:46  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:44  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:56  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:61  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:06  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:15  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:55  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:32  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:10  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:83  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:28  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:13  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:81  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:65  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:86  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:49  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:46  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:28  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:33  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:26  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:00  info : [object Object] 
+ [LOGGER] 23-02-07 20:02:78  error : TypeError: Cannot read properties of null (reading 'Validate')
+    at addProduCart (C:\Users\Administrator\Documents\GitHub\Final-Proyect\apiServices\cart\model.js:38:29)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async addProduct (C:\Users\Administrator\Documents\GitHub\Final-Proyect\apiServices\cart\controller.js:42:18)
+    at async wrappedMiddleware (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\@awaitjs\express\index.js:64:9) 
+ [LOGGER] 23-02-07 20:02:42  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:21  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:46  error : TypeError: Cannot read properties of undefined (reading 'Validate')
+    at isAutenticated (C:\Users\Administrator\Documents\GitHub\Final-Proyect\middleware\Auth.js:13:36)
+    at wrappedMiddleware (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\@awaitjs\express\index.js:62:26)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:175:3) 
+ [LOGGER] 23-02-07 20:02:100  error : TypeError: Cannot read properties of undefined (reading 'Validate')
+    at isAutenticated (C:\Users\Administrator\Documents\GitHub\Final-Proyect\middleware\Auth.js:13:36)
+    at wrappedMiddleware (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\@awaitjs\express\index.js:62:26)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:175:3) 
+ [LOGGER] 23-02-07 20:02:19  error : TypeError: Cannot read properties of undefined (reading 'Validate')
+    at isAutenticated (C:\Users\Administrator\Documents\GitHub\Final-Proyect\middleware\Auth.js:13:36)
+    at wrappedMiddleware (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\@awaitjs\express\index.js:62:26)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:175:3) 
+ [LOGGER] 23-02-07 20:02:87  error : TypeError: Cannot read properties of undefined (reading 'Producto')
+    at getProduCart (C:\Users\Administrator\Documents\GitHub\Final-Proyect\apiServices\cart\model.js:24:35)
+    at getCartProd (C:\Users\Administrator\Documents\GitHub\Final-Proyect\apiServices\cart\controller.js:29:33)
+    at wrappedMiddleware (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\@awaitjs\express\index.js:62:26)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Administrator\Documents\GitHub\Final-Proyect\node_modules\express\lib\router\index.js:280:10) 
+ [LOGGER] 23-02-07 20:02:29  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:06  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:66  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:46  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:65  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:42  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:01  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:82  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:06  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:75  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:33  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:99  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:20  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:95  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:66  info : [object Object] 
+ [LOGGER] 23-02-07 20:02:75  info : [object Promise] 
+ [LOGGER] 23-02-07 20:02:75  info : undefined 
+ [LOGGER] 23-02-07 20:02:82  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:84  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:44  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:46  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:85  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:81  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:24  info : [object Promise] 
+ [LOGGER] 23-02-07 20:02:24  info : undefined 
+ [LOGGER] 23-02-07 20:02:26  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:96  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:35  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:21  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:36  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:14  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:64  info : {"Nombre":"tipitoRandomme","Descripcion":"der45311yt@gmail.com","Codigo":32432,"Foto":"url","Precio":7000}, 
+ [LOGGER] 23-02-07 20:02:34  info : [object Object] 
+ [LOGGER] 23-02-07 20:02:35  info : undefined 
+ [LOGGER] 23-02-07 20:02:01  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:82  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:78  info : Su servidor escucha en el puerto 8080 
+ [LOGGER] 23-02-07 20:02:46  info :  Mongoose is connected 
+ [LOGGER] 23-02-07 20:02:05  info : {"Nombre":"tipitoRandomme","Descripcion":"der45311yt@gmail.com","Codigo":32432,"Foto":"url","Precio":7000}, 
+ [LOGGER] 23-02-07 20:02:06  info : [object Object] 
+ [LOGGER] 23-02-07 20:02:82  info : [object Object] 
+ [LOGGER] 23-02-07 20:02:83  info : undefined 

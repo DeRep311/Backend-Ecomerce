@@ -21,6 +21,7 @@ const mailOptionsDelivery = (email, datos, productos) => {
                         Lista de productos: <br>
                         ${productos} `
         }
+        log.info(mail)
         return mail
     } catch (error) {
        log.error(error);
@@ -51,10 +52,10 @@ const mailOptions =  (email, datos) => {
 }
 const MailBuy = async (email, datos, productos) => {
     try {
-        const info = transporter.sendMail(mailOptionsDelivery(email, datos, productos))
+        const info = await transporter.sendMail(await mailOptionsDelivery(email, datos, productos))
         log.info(info)
     } catch (error) {
-        console.log(error);
+        log.error(error.stack);
         return false
     }
 }
@@ -66,7 +67,7 @@ const enviomail = async (datos) => {
         return true
     } catch (error) {
         
-        console.log(error);
+        log.error(error.stack);
         return false
     }
 }

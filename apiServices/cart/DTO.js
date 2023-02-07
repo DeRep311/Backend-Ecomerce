@@ -1,4 +1,4 @@
-
+const log= require('winston')
 module.exports = {
     async productos(datos){
         var data="";
@@ -14,6 +14,7 @@ module.exports = {
                 delete element.__v
                  data += `${JSON.stringify(element)},`
             }
+            log.info(data)
             
        });
         

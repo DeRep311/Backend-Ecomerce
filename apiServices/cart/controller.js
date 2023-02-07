@@ -39,28 +39,21 @@ module.exports = {
 
         try {
             var id = req.params.id_prod;
-            id = await addProduCart(id)
-            var produ;
+            const produ= await addProduCart(id)
+          
             if (req.session.Cart.Producto) {
 
-                if (id) {
-                    produ = id[0];
+                if (produ) {
+                    
                     req.session.Cart.Producto.push(produ)
                     res.send(`Producto ingresado`)
                 } else {
                     res.status(400).send('Producto no encontrado');
                 }
 
-            } else {
-
-                if (id) {
-                    req.session.Cart.Producto = id
-                    res.send(`Producto ingresado`)
-                } else {
-                    res.status(400).send('Producto no encontrado');
-                }
-
-            }
+            } 
+               
+            
 
         } catch (error) {
             log.error(error);
@@ -75,8 +68,8 @@ module.exports = {
         res.status(200).send('Producto borrado correctamente')
     },
     async buy(req, res) {
-        NecesaryData = req.UserId
-        cart = req.session.Cart
+        var NecesaryData = req.UserId
+        var cart = req.session.Cart
         const validation = await Allbuy(NecesaryData, cart)
 
         validation ? res.status(200).send('Compra realizada, le llegara un email con la informacion')

@@ -26,14 +26,16 @@ module.exports = {
 
             const productos = await Prod.getAllProdu(req.params.id)
             if (productos.Validate) {
-                res.render('Pages/ListProduct',{Productos: productos.Product})
+                res.json(productos.Product)
+            }else{
+                res.sendStatus(productos.Error).json({})
             }
             
 
 
         } catch (error) { 
             res.sendStatus(400)
-            log.error(JSON.stringify(error));
+            log.error(error.stack);
         }
     },
     async editProduct(req, res) {

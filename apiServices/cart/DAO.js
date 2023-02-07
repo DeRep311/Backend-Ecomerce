@@ -1,11 +1,13 @@
 const CRUD = require('../../Services/Databases/Mongo/Manager/ProductoManager');
-const DB = new CRUD('Prod');
-const log = require('winston')
+const DB = new CRUD();
+const log = require('winston');
+const { productosFilter } = require('./DTO');
 module.exports = {
     async AddProducts(Produ) {
 
         try {
-           producto= await DB.Read(Produ)
+          const producto= await DB.Read(Produ)
+          
            return producto 
         } catch (error) {
             console.log(error);
@@ -17,7 +19,7 @@ module.exports = {
         try {
             const data = await DB.Read(id)
 
-            console.log(data.Productos);
+            
 
             if (data.Productos== undefined) {
                 console.log("Este carrito no tiene productos");

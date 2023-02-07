@@ -3,10 +3,9 @@ const { MailBuy } = require('../../Services/Contact/nodmailer')
 const { Mensagge } = require('../../Services/Contact/twilio')
 const { deSerializer } = require('../User/DAO')
 const DB = require("./DAO")
-
 const { productos } = require('./DTO')
 module.exports = {
-     async newCart(data) {
+     async newCart() {
           try {
                const carrito = {
                     Fecha: `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`,
@@ -18,13 +17,6 @@ module.exports = {
                return false
 
 
-          }
-     },
-     async deleteCart(id) {
-          try {
-               await DB.DeleteCartById(id)
-          } catch (error) {
-               log.error(error.stack);
           }
      },
      async getProduCart(cart) {
@@ -43,11 +35,12 @@ module.exports = {
      async addProduCart(produ) {
           try {
                const producto = await DB.AddProducts(produ)
-               if (producto) {
-                    producto.fechaIngreso = `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`
-                    return producto
+               if (producto.Validate) {
+                    const ProductExist= producto.Product
+                    ProductExist.fechaIngreso = `${new Date().toDateString()} ${new Date().toLocaleTimeString()}`
+                    return ProductExist
                } else {
-                    return 'no se encuentra el producto'
+                    return false
                }
           } catch (error) {
                log.error(error.stack);
@@ -89,7 +82,7 @@ module.exports = {
                const info= await MailBuy(email, DataUser, produ)
                log.info(info)
                //Se envia un mensaje al administrador (podria ser un repartidor), es funcional pero el servicio no esta contratado por ende espera verificacion desde twilio para enviarlo
-               await Mensagge(bodywpp)
+               // await Mensagge(bodywpp)
                return true
           } catch (error) {
                log.error(error.stack) 

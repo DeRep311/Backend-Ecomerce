@@ -74,7 +74,7 @@ class CRUD {
             return { Validate: false, Error: 500 }
         }
     }
-    async Update(id_nomb, params) {
+    async Update(id_nomb, params) { 
         try {
             const config = { $set: params }
 
