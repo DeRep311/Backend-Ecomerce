@@ -26,7 +26,7 @@ module.exports = {
 
             const productos = await Prod.getAllProdu(req.params.id)
             if (productos.Validate) {
-                res.render('pages/ListProduct',{Productos: productos.Product})
+                res.render('Pages/ListProduct',{Productos: productos.Product})
             }
             
 
