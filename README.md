@@ -128,3 +128,14 @@
   
   `Missing (propiedad)`
 
+### Carrito:
+
+#### Datos a tener en cuenta:
+
+* Carrito de almacena en la session del usuario(Guardada en la mongostore como precaucion)
+* Carrito solo almacena productos ya registrados
+* Carrito solo se crea 1 por usuario
+
+###Rutas de carritos
+
+*  `POST pi/cart`
