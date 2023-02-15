@@ -136,6 +136,25 @@
 * Carrito solo almacena productos ya registrados
 * Carrito solo se crea 1 por usuario
 
-###Rutas de carritos
+### Rutas de carritos
 
-*  `POST pi/cart`
+*  `POST api/cart` Creara un carrito de la fecha en ese momento y dara una respuesta ej: 
+//
+`Su carrito fue creado: {"Fecha":"(fecha actual)","Producto":[(vacio el array de productos pq no agrego todavia)]}`
+
+En el caso de ya estar creado, simplemente respondera:
+`Ya tiene un carrito creado`
+
+* `DELETE api/cart` Elimina el carrito creado, su respuesta sera:
+`Carrito a sido eliminado`
+
+* `POST api/cart/id_nomb_productos agrega al carrito produtos ya ingresados con su nombre o id ej de respuesta:
+
+* `GET api/cart/productos` Revisa los productos que tiene el carrito, respuesta: 
+
+Si no tiene productos
+`No tiene productos`
+Si los tiene
+``
+
+(Trabajando en la documentacion)
