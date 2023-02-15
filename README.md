@@ -148,13 +148,39 @@ En el caso de ya estar creado, simplemente respondera:
 * `DELETE api/cart` Elimina el carrito creado, su respuesta sera:
 `Carrito a sido eliminado`
 
-* `POST api/cart/id_nomb_productos agrega al carrito produtos ya ingresados con su nombre o id ej de respuesta:
+* `POST api/cart/id_nomb_productos` agrega al carrito produtos ya ingresados con su nombre o id ej de respuesta:
+#### `Peticion: /api/cart/productos/jijija(nombre del producto)`
+
+`Producto ingresado`
+
+En el caso de que el producto no se encuentre o no este registrado respondera:
+
+`Producto no encontrado`
+
 
 * `GET api/cart/productos` Revisa los productos que tiene el carrito, respuesta: 
 
-Si no tiene productos
+
+Si no tiene productos:
 `No tiene productos`
-Si los tiene
-``
+Si los tiene:
+````javascript
+[
+    {
+        "_id": "63e282de4a7426704f581c62",
+        "Nombre": "jijija",
+        "Descripcion": "asdnksalnldsa",
+        "Codigo": 21321,
+        "Foto": "dsfdlsgfmdsgf",
+        "Precio": 213,
+        "Stock": 56,
+        "__v": 0
+    }
+    
+````
+
+*  `DELETE api/cart/productos/id_Nombre_Producto` borra un producto del carrito entregando su nombre o id:
+
+`Peticion:
 
 (Trabajando en la documentacion)
