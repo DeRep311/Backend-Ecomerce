@@ -181,6 +181,22 @@ Si los tiene:
 
 *  `DELETE api/cart/productos/id_Nombre_Producto` borra un producto del carrito entregando su nombre o id:
 
-`Peticion:
+`Peticion: http://localhost:8080/api/cart/productos/jijija` 
+
+Respuesta: `Producto borrado correctamente`
+
+*  `GET api/cart/buy` Compra la lista de producto del carrito, tiene que estar logeado previamente en caso de que no lo este lo redirigira a /login:
+
+`Respuesta: Compra realizada, le llegara un email con la informacion`
+
+enviara un mail que no llega pero se ve que sale de la cuenta (no se pq nunca llega pq en realidad se envia)
+
+## Usuarios
+
+#### Datos a tener en cuenta:
+* Genera un token jwt sin passport jwt, por cuestiones de bugs
+* Todo el login esta echo sin passport
+
+### Rutas de usuarios
 
 (Trabajando en la documentacion)
