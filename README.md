@@ -196,6 +196,7 @@ enviara un mail que no llega pero se ve que sale de la cuenta (no se pq nunca ll
 #### Datos a tener en cuenta:
 * Genera un token jwt sin passport jwt, por cuestiones de bugs
 * Todo el login esta echo sin passport
+* Chat global no funciona en produccion pero en entorno local si. supongo que debe ser render el problema, lo mismo que los styles de las vistas, en produccion no funcionan pero en entorno local si
 
 ### Rutas de usuarios
 
@@ -209,5 +210,19 @@ enviara un mail que no llega pero se ve que sale de la cuenta (no se pq nunca ll
 
 * `GET /logout`: Ruta de destruccion de login (session)
 
-* `GET /logout`: Ruta de destruccion de login (session)
-(Trabajando en la documentacion)
+* `GET /profile`: Ruta de ver datos de registro
+
+* `GET /chatglobal`: chat de mensajes entre usuarios y admins
+
+
+## Middlewares utilizados:
+
+`Auth`: Un middleware para verificar el jwt ademas determinar si el user es admin (para crear una admin se hace desde la base), se utiliza para rutas protegidas.
+
+`Status`: Un middleware utilizado para saber cada vez que se refresque si el usuario esta logeado(su uso es para estetica)
+
+## Percances generados:
+
+* Nodemailer no envia el mail, desde el correo que se envia aparece el envio pero este no llega al lugar correspondiente (Buscando soluciones o alternativas)
+* Nodemailer no escribe correctamente el mensaje, recibe los datos correctamente pero no entiende su propio formato y lo envia vacio sin remitente (No a sido solucionado pero los datos llegan correctamente)
+
