@@ -199,4 +199,15 @@ enviara un mail que no llega pero se ve que sale de la cuenta (no se pq nunca ll
 
 ### Rutas de usuarios
 
+* `GET /`: Va ingresar al home que le mostrara si esta logueado o no y dara opciones de registrarse o logearse
+
+(intente adjuntar imagen pero no pude xD)
+
+* `GET /signup`: Ruta de registro
+
+* `GET /signin Ruta de login
+
+* `GET /logout`: Ruta de destruccion de login (session)
+
+* `GET /logout`: Ruta de destruccion de login (session)
 (Trabajando en la documentacion)
